@@ -2,11 +2,12 @@ import os
 import streamlit as st
 from langchain.llms import OpenAI  
 
+
 from langchain.prompts import PromptTemplate
-from langchain.chains import LLMChain
-from langchain.prompts import PromptTemplate
-from langchain.chains import LLMChain, SequentialChain
+from langchain.chains import LLMChain, SequentialChain 
 from langchain.memory import ConversationBufferMemory
+from langchain.utilities import WikipediaAPIWrapper 
+
 
 
 # Set OpenAI API key (ensure this is managed securely in production)
@@ -14,13 +15,13 @@ apikey = 'sk-proj-YzPRvGe8hk36nuz7vIoV4ZRW_0nlyt1Yp98x1Vk6rN0LiuXLOIq8Cc6JL3T3Bl
 os.environ['OPENAI_API_KEY'] = apikey
 
 # App framework
-st.title("YouTube GPT Creator")
+st.title("GPT music explainer")
 prompt = st.text_input('Plug in your prompt here')
 
 # Define prompt templates
 title_template = PromptTemplate(
     input_variables=['input'],  # Changed to match input key
-    template='write me a youtube video title about {input}'
+    template='explain this song line by line:{input} don't repeat lines that you are already explained'
 )
 script_template = PromptTemplate(
     input_variables=['input'],  # Changed to match input key passed by the previous chain
