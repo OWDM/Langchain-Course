@@ -28,7 +28,7 @@ title_template = PromptTemplate(
 
 # Define the LLM with the correct class for chat models model="gpt-3.5-turbo",
 
-llm = ChatOpenAI( model="gpt-4",temperature=0.9)
+llm = ChatOpenAI( model="gpt-3.5-turbo",temperature=0.9)
 title_chain = LLMChain(llm=llm, prompt = title_template)
 
 # Run the chain if the user provides input
