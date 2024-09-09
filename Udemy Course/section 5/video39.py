@@ -14,8 +14,7 @@ text_splitter = CharacterTextSplitter(
     chunk_overlap=0
 )
 
-file_path = 'D:\\owd1\\Documents\\GitHub-REPO\\Langchain-Course\\Udemy Course\\facts.txt'
-loader = TextLoader(file_path)
+loader = TextLoader("facts.txt")
 docs = loader.load_and_split(
     text_splitter=text_splitter
 )
